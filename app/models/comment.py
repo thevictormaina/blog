@@ -10,3 +10,9 @@ class Comment(db.Model):
     email = db.Column(db.String(255))
     comment = db.Column(db.String())
     blogpost_id = db.Column(db.Integer, db.ForeignKey("blogposts.id"))
+
+    def delete_comment(self):
+        """
+        Method for removing comment from databse
+        """
+        Comment.query.filter_by(id = self.id).delete()

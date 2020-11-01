@@ -14,3 +14,13 @@ class Subscriber(db.Model):
     last_name = db.Column(db.String(255))
 
     subscriptions = db.relationship("User", secondary=subscriptions_table, back_populates = "subscribers")
+
+    def add_subscription(self, user):
+        """
+        Method to add subscription
+        """
+        from . import User
+        if isinstance(user, User) == False:
+            raise AttributeError("Not of type User")
+        else:
+            self.subscriptions.append(user)
