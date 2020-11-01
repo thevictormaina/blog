@@ -4,7 +4,7 @@ from flask_migrate import Migrate, MigrateCommand
 from app.models import User, Blogpost, Comment, Subscriber
 
 # Create app instance
-app = create_app("development")
+app = create_app("test")
 
 # Initialize Manager extension and create server CLI command
 manager = Manager(app)

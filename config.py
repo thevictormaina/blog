@@ -7,6 +7,9 @@ class Config:
     # WTForms configurations
     SECRET_KEY = os.environ.get("SECRET_KEY")
 
+    # Set location for Flask Uploads
+    UPLOADED_PHOTOS_DEST = "app/static/images"
+
     # API Key configurations
     QUOTES_API_KEY = os.environ.get("QUOTES_API_KEY")
     QUOTES_BASE_URL = os.environ.get("QUOTES_BASE_URL")
@@ -21,25 +24,23 @@ class Config:
     # SimpleMDE Configurations
     SIMPLEMDE_JS_IIFE = True
     SIMPLEMDE_USER_CDN = True
-
-    # SQLAlchemy Configurations
     
 
 class DevConfig(Config):
     """
     Class for development configurations. Child of class Config.
     """
-    psql_username = os.environ.get("POSTGRES_USERNAME")
-    psql_password = os.environ.get("POSTGRES_PASSWORD")
-    SQLALCHEMY_DATABASE_URI = f"postgresql+psqycopg2://{psql_username}:{psql_password}@localhost/blog_app"
+    psql_username = "victormainak"
+    psql_password = "password"
+    SQLALCHEMY_DATABASE_URI = f"postgresql+psycopg2://{psql_username}:{psql_password}@localhost/blog_app"
 
 class TestConfig(Config):
     """
     Class for testing configurations. Child of class Config.
     """
-    psql_username = os.environ.get("POSTGRES_USERNAME")
-    psql_password = os.environ.get("POSTGRES_PASSWORD")
-    SQLALCHEMY_DATABASE_URI = f"postgresql+psqycopg2://{psql_username}:{psql_password}@localhost/blog_app_test"
+    psql_username = "victormainak"
+    psql_password = "password"
+    SQLALCHEMY_DATABASE_URI = f"postgresql+psycopg2://{psql_username}:{psql_password}@localhost/blog_app_test"
 
 class ProdConfig(Config):
     """
@@ -49,6 +50,6 @@ class ProdConfig(Config):
 
 config_options = {
     "development": DevConfig,
-    "testing": TestConfig,
+    "test": TestConfig,
     "production": ProdConfig
 }
