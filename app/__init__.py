@@ -39,8 +39,10 @@ def create_app(config_name):
     # Register app blueprints
     from .main import main as main_blueprint
     from .auth import auth as auth_blueprint
+    from .blogger import blogger as blogger_blueprint
     app.register_blueprint(main_blueprint)
     app.register_blueprint(auth_blueprint, url_prefix="/auth")
+    app.register_blueprint(blogger_blueprint, url_prefix="/blogger")
 
     # Configure api requests
     configure_request(app)

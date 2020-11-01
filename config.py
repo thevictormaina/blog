@@ -11,11 +11,9 @@ class Config:
     UPLOADED_PHOTOS_DEST = "app/static/images"
 
     # API Key configurations
-    QUOTES_API_KEY = os.environ.get("QUOTES_API_KEY")
-    QUOTES_BASE_URL = os.environ.get("QUOTES_BASE_URL")
-
+    QUOTE_URL = "http://quotes.stormconsultancy.co.uk/random.json"
     # Mail configurations
-    MAIL_SERVER = "smpt.gmail.com"
+    MAIL_SERVER = "smtp.gmail.com"
     MAIL_PORT = 587
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
@@ -33,7 +31,8 @@ class DevConfig(Config):
     psql_username = "victormainak"
     psql_password = "password"
     SQLALCHEMY_DATABASE_URI = f"postgresql+psycopg2://{psql_username}:{psql_password}@localhost/blog_app"
-
+    DEBUG = True
+    
 class TestConfig(Config):
     """
     Class for testing configurations. Child of class Config.

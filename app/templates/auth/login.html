@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% import "bootstrap/form.html" as form %}
+
+{% block content %}
+
+<div>
+    {% for message in get_flashed_messages() %}
+    <div>
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+
+<div>
+    {{form.render_form(login_form)}}
+</div>
+{% endblock content %}
