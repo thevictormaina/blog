@@ -11,7 +11,7 @@ manager = Manager(app)
 manager.add_command("server", Server)
 
 # Initialize Migrate extension and create migration CLI commands
-migrate = Migrate(app, db)
+migrate = Migrate(app, db, include_schemas=True)
 manager.add_command("db", MigrateCommand)
 
 # Create CLI commands for running tests
