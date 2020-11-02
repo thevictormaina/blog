@@ -42,7 +42,7 @@ def create_app(config_name):
     from .blogger import blogger as blogger_blueprint
     app.register_blueprint(main_blueprint)
     app.register_blueprint(auth_blueprint, url_prefix="/auth")
-    app.register_blueprint(blogger_blueprint, url_prefix="/blogger")
+    app.register_blueprint(blogger_blueprint)
 
     # Configure api requests
     configure_request(app)

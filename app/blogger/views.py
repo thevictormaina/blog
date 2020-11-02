@@ -1,13 +1,14 @@
 from flask import flash, redirect, render_template, request, url_for
 from flask_login import login_required, login_user, logout_user
 
-from ..models import User, Subscriber, Blogpost
-from ..services.email import mail_message
-from . import blogger
 # from .forms import NewBlogpost
 from .. import db, simple
+from ..models import Blogpost, Comment, Subscriber, User
+from ..services.email import mail_message
+from . import blogger
 
-@blogger.route("/<user_name>", methods=["GET", "POST"])
+
+@blogger.route("/blogger/<user_name>", methods=["GET", "POST"])
 def profile(user_name):
     """
     View function for displaying blogger's profile page
@@ -20,16 +21,20 @@ def profile(user_name):
     title = f"Unload - {user_name}"
     return render_template("blogger/profile.html", user = user)
 
-@blogger.route("/<user_name>/post/<blogpost_id>", methods=["GET", "POST"])
-def blogpost(user_name, blogpost_id):
+@blogger.route('/blogpost/<blogpost_id>', methods=["GET", "POST"])
+def blogpost(blogpost_id):
     """
     View function for displaying blogposts.
 
     Readers: can read post by blogger and leave comments
     Bloggers: can view post and delete comments
     """
+    user = request.args.get("user_name")
+    blogpost = Blogpost.query.filter_by(id = blogpost_id).first()
 
-    return render_template("blogger/blogpost.html")
+    title = f"Unload - Title"
+
+    return render_template("blogger/blog_post.html", user = user, blog_post = blogpost, title = title)
 
 @blogger.route("/new-post", methods=["GET", "POST"])
 @login_required
@@ -37,6 +42,7 @@ def create_blogpost():
     """
     View function for displaying new blogpost form
     """
+    pass
 
 @blogger.route("/<user_name>/subscribers")
 @login_required
@@ -44,3 +50,4 @@ def subscribers(user_name):
     """
     View function for displaying list of blogger's subscribers
     """
+    pass

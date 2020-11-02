@@ -11,7 +11,10 @@
     <!-- Displays when user is logged in -->
     <div class="d-flex mt-1">
       <button class="bg-faded-orange d-flex align-items-center mr-3">My Account</button>
-      <button class="button-outline faded-orange border-faded-orange">Sign Out</button>
+      <a href="{{ url_for('auth.logout') }}">
+        <button class="button-outline faded-orange border-faded-orange">Sign Out</button>
+      </a>
+
     </div>
     {% else %}
     <!-- Displays when user is not logged in -->

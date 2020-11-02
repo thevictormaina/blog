@@ -1,0 +1,31 @@
+.blogpost_profile {
+    min-width: 200px;
+    max-height: 462px;
+}
+
+.blogpost_profile > div > :first-child {
+    border-radius: 10px;
+}
+
+.avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px 10px 0 0;
+    background-size: cover;
+}
+
+.blogpost_header {
+    border-radius: 10px;
+}
+
+.blogpost-image {
+    opacity: 0.8;
+    border-radius: 10px 10px 0 0;
+    height: 350px;
+    background-size: cover;
+}
+
+.blogpost-content {
+    margin-top: 50px;
+    text-align: justify;
+}

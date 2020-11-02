@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    {% block head %}
+    <!-- {% block head %} -->
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="../static/images/favicon.png">
+    <link rel="icon" type="image/png" href="../static/images/logo/png/Logo_Small Light.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
 
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../static/styles/index.css">
 
     {% endblock %}
-    {% endblock %}
+    <!-- {% endblock %} -->
 </head>
 
 <body>
@@ -26,7 +26,7 @@
     {% block navbar %}
     {% include "navbar.html" %}
     {% endblock %}
-    <div style="width: 100%; max-width: 1200px; margin: auto;">
+    <div style="width: 100%; min-width: 900px; max-width: 1200px; margin: auto; padding-left: 16px; padding-right: 16px;">
         <!-- Page content -->
         {% block content %}
 

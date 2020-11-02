@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="../../static/styles/blogpost.css">
+{% endblock styles %}
+
+{% block content %}
+
+
+<div class="mt-5 d-flex align-items-start justify-content-between">
+    <div class="blogpost_profile mr-4">
+        <div class="position-fixed">
+            <div class="bg-grayscale-2">
+                <div class="avatar" style="background-image: url('../../static/images/profile_pics/victormainak.jpg');">
+                </div>
+                <div class="p-4">
+                    <div class="grayscale-7 header-4">victormainak</div>
+                    <div class="caption grayscale-5">Photography Blogger</div>
+                </div>
+            </div>
+            <a href="">
+                <button class="button-outline position-relative faded-orange border-faded-orange mt-4 w-100 text-center">Visit Profile</button>
+            </a>
+            <a href="">
+                <button class="bg-faded-orange position-relative border-faded-orange mt-3 w-100 text-center">Subscribe</button>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="flex-fill">
+        <div class="blogpost_header bg-grayscale-2">
+            <div class="blogpost-image"
+                style="background-image: url(../../static/images/post_images/pexels-karol-d-409701\ 1.png);"></div>
+            <div class="p-4 pl-5 pr-5">
+                <div class="header-1">Amazing Photography Techniques for Shooting at Night</div>
+                <div class="callout mt-3 mb-1 d-flex align-items-center">
+                    <div class="callout grayscale-7 mr-4">By Victor K. Maina</div>
+                    <div class="callout-small grayscale-5">1 hour ago</div>
+                </div>
+            </div>
+        </div>
+        <div class="blogpost-content body-text grayscale-5 pl-3 pr-3">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non sapien tortor. Donec mattis metus
+                eget aliquet facilisis. Vivamus congue purus nec elit gravida aliquet. Donec ultricies fermentum orci ut
+                tempor. Nam fringilla nibh ante, a bibendum lacus pellentesque quis. Duis at leo nec felis feugiat
+                malesuada. Vestibulum malesuada luctus dui, quis sodales quam condimentum eget. Vestibulum consequat ex
+                porttitor eros congue, eleifend tempus odio venenatis. Quisque rutrum, turpis non egestas consequat,
+                velit urna varius lorem, id tempor nulla quam eget purus. Maecenas sollicitudin dolor sit amet ex
+                vehicula, at finibus purus eleifend.</p>
+
+            <p>Duis hendrerit risus et finibus consequat. Phasellus tempus tincidunt felis in ullamcorper. Suspendisse
+                potenti. Aliquam congue ac massa in ultrices. Nam dolor mauris, faucibus id ultrices at, accumsan vel
+                sapien. Suspendisse potenti. Aenean vestibulum erat sed magna tristique commodo. Maecenas nec risus
+                eros.</p>
+
+            <p>Sed pellentesque magna in sem sodales, sed porta purus lacinia. Donec in est cursus, aliquet enim ut,
+                scelerisque odio. Vestibulum malesuada vel tellus nec laoreet. In eleifend luctus nulla vitae egestas.
+                Integer ac massa orci. Sed libero diam, volutpat quis ante at, auctor auctor felis. Praesent cursus
+                neque ut nisi suscipit, nec fringilla est pellentesque. Mauris gravida vel lorem quis egestas. Sed lacus
+                quam, pellentesque ut sem et, venenatis pharetra ante. Nulla vitae efficitur tellus, a eleifend ante.
+            </p>
+
+            <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis at
+                tortor luctus, egestas orci non, mollis risus. Curabitur ac ligula vitae turpis faucibus tincidunt ut
+                non dui. Nunc rhoncus, enim ac feugiat condimentum, felis augue accumsan augue, vitae viverra ante
+                sapien interdum justo. Etiam tincidunt augue a aliquet dictum. Praesent pharetra mi mi, nec luctus enim
+                volutpat sed. Ut lorem elit, lacinia nec fringilla et, porta ut ante. Nam sed nulla sit amet massa porta
+                ultrices. Ut pharetra elit eget hendrerit feugiat. Ut egestas ipsum at faucibus luctus.</p>
+
+
+            <p>Curabitur erat neque, porttitor eget pretium accumsan, egestas non enim. Integer fringilla tempor urna eu
+                semper. In rhoncus nisl imperdiet blandit dignissim. Nulla fringilla massa eget turpis auctor imperdiet.
+                Quisque cursus facilisis tortor vitae venenatis. Interdum et malesuada fames ac ante ipsum primis in
+                faucibus. Mauris molestie, ipsum et consequat consectetur, metus sapien finibus purus, a sodales arcu
+                metus vitae ex. Vestibulum dapibus augue et est tincidunt, eu commodo justo consequat. Mauris accumsan
+                libero id risus lobortis, id lobortis ex vulputate. Praesent porttitor porttitor ipsum, quis interdum
+                urna suscipit vitae. </p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non sapien tortor. Donec mattis metus
+                eget aliquet facilisis. Vivamus congue purus nec elit gravida aliquet. Donec ultricies fermentum orci ut
+                tempor. Nam fringilla nibh ante, a bibendum lacus pellentesque quis. Duis at leo nec felis feugiat
+                malesuada. Vestibulum malesuada luctus dui, quis sodales quam condimentum eget. Vestibulum consequat ex
+                porttitor eros congue, eleifend tempus odio venenatis. Quisque rutrum, turpis non egestas consequat,
+                velit urna varius lorem, id tempor nulla quam eget purus. Maecenas sollicitudin dolor sit amet ex
+                vehicula, at finibus purus eleifend.</p>
+
+            <p>Duis hendrerit risus et finibus consequat. Phasellus tempus tincidunt felis in ullamcorper. Suspendisse
+                potenti. Aliquam congue ac massa in ultrices. Nam dolor mauris, faucibus id ultrices at, accumsan vel
+                sapien. Suspendisse potenti. Aenean vestibulum erat sed magna tristique commodo. Maecenas nec risus
+                eros.</p>
+
+            <p>Sed pellentesque magna in sem sodales, sed porta purus lacinia. Donec in est cursus, aliquet enim ut,
+                scelerisque odio. Vestibulum malesuada vel tellus nec laoreet. In eleifend luctus nulla vitae egestas.
+                Integer ac massa orci. Sed libero diam, volutpat quis ante at, auctor auctor felis. Praesent cursus
+                neque ut nisi suscipit, nec fringilla est pellentesque. Mauris gravida vel lorem quis egestas. Sed lacus
+                quam, pellentesque ut sem et, venenatis pharetra ante. Nulla vitae efficitur tellus, a eleifend ante.
+            </p>
+
+            <p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis at
+                tortor luctus, egestas orci non, mollis risus. Curabitur ac ligula vitae turpis faucibus tincidunt ut
+                non dui. Nunc rhoncus, enim ac feugiat condimentum, felis augue accumsan augue, vitae viverra ante
+                sapien interdum justo. Etiam tincidunt augue a aliquet dictum. Praesent pharetra mi mi, nec luctus enim
+                volutpat sed. Ut lorem elit, lacinia nec fringilla et, porta ut ante. Nam sed nulla sit amet massa porta
+                ultrices. Ut pharetra elit eget hendrerit feugiat. Ut egestas ipsum at faucibus luctus.</p>
+
+
+            <p>Curabitur erat neque, porttitor eget pretium accumsan, egestas non enim. Integer fringilla tempor urna eu
+                semper. In rhoncus nisl imperdiet blandit dignissim. Nulla fringilla massa eget turpis auctor imperdiet.
+                Quisque cursus facilisis tortor vitae venenatis. Interdum et malesuada fames ac ante ipsum primis in
+                faucibus. Mauris molestie, ipsum et consequat consectetur, metus sapien finibus purus, a sodales arcu
+                metus vitae ex. Vestibulum dapibus augue et est tincidunt, eu commodo justo consequat. Mauris accumsan
+                libero id risus lobortis, id lobortis ex vulputate. Praesent porttitor porttitor ipsum, quis interdum
+                urna suscipit vitae. </p>
+        </div>
+    </div>
+
+
+</div>
+
+
+{% endblock content %}

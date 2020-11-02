@@ -1,0 +1,44 @@
+{% macro feedBlogposts() %}
+<div class="d-flex mb-4">
+    <div class="pr-3">
+        <!-- Profile picture -->
+        <div class="feed-post-profile" style="background-image: url('../static/images/profile_pics/victormainak.jpg');">
+        </div>
+        <!-- Likes button -->
+        <div class="feed-post-likes d-flex justify-content-center align-items-center">
+            <div>
+                <div class="iconify m-0 p-0" data-inline="false" data-icon="bx:bxs-up-arrow-alt"
+                    style="color: #9fa2a8; font-size: 22px;"></div>
+                <div class="callout-small">56</div>
+            </div>
+
+        </div>
+    </div>
+    <a href="{{ url_for('blogger.blogpost', blogger = 'victormainak', blogpost_id = 1)}}">
+        <div class="feed-post">
+            <div class="feed-post-header d-flex align-items-center justify-content-between">
+                <div class="header-4 grayscale-7">victormainak</div>
+                <div class="caption grayscale-5">1 hour ago</div>
+            </div>
+            <div class="feed-post-image"
+                style="background-image: url('../../static/images/post_images/pexels-karol-d-409701\ 1.png');"></div>
+            <div class="feed-post-content">
+                <div class="header-2 grayscale-7 mb-3">Amazing Photography Techniques for Shooting at Night</div>
+                <div class="body-text grayscale-5 mb-5">Sed eget cursus nunc. Fusce a mauris sit amet mi auctor
+                    tincidunt. In
+                    mattis orci vel nunc dignissim cursus. Cras ultrices felis justo, at pretium arcu consequat non.
+                    Quisque
+                    sed facilisis justo, ac tincidunt nulla. Sed euismod orci tellus, sed imperdiet dolor porttitor
+                    quis.
+                    Phasellus pharetra erat nec justo faucibus, non commodo...
+                </div>
+                <div class="feed-post-comment d-flex align-items-center">
+                    <embed src="../../static/images/bx-message-square-dots.svg" type="">
+                    <div class="callout-small grayscale-5 ml-3">10 Comments</div>
+                </div>
+            </div>
+        </div>
+    </a>
+
+</div>
+{% endmacro %}
