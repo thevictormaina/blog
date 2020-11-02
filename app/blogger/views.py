@@ -1,7 +1,8 @@
 from flask import flash, redirect, render_template, request, url_for
-from flask_login import login_required, login_user, logout_user
+from flask_login import login_required, login_user, logout_user, current_user
+import markdown2
 
-# from .forms import NewBlogpost
+from .forms import NewBlogpost
 from .. import db, simple
 from ..models import Blogpost, Comment, Subscriber, User
 from ..services.email import mail_message
@@ -32,9 +33,11 @@ def blogpost(blogpost_id):
     user = request.args.get("user_name")
     blogpost = Blogpost.query.filter_by(id = blogpost_id).first()
 
-    title = f"Unload - Title"
+    body_format = markdown2.markdown(blogpost.body, extras = ["code-friendly", "fenced-code-blocks"])
 
-    return render_template("blogger/blog_post.html", user = user, blog_post = blogpost, title = title)
+    title = f"Unload - {blogpost.title}"
+
+    return render_template("blogger/blog_post.html", user = user, blogpost = blogpost, body_format = body_format, title = title)
 
 @blogger.route("/new-post", methods=["GET", "POST"])
 @login_required
@@ -42,7 +45,23 @@ def create_blogpost():
     """
     View function for displaying new blogpost form
     """
-    pass
+    form = NewBlogpost()
+
+    if form.validate_on_submit():
+        title = form.title.data
+        author = form.author.data
+        post_content = form.post_content.data
+        # image = form.image.data
+
+        new_blogpost = Blogpost(title = title, author = author, user_id = current_user.id, body = post_content)
+
+        db.session.add(new_blogpost)
+        db.session.commit()
+
+        return redirect(url_for("blogger.blogpost", blogpost_id = new_blogpost.id))
+
+    title = "Unload - Create new post"
+    return render_template('blogger/new_post.html', blogpost_form = form)
 
 @blogger.route("/<user_name>/subscribers")
 @login_required

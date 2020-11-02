@@ -1,8 +1,9 @@
-{% macro feedBlogposts() %}
+{% macro feedBlogposts(blogposts) %}
+{% for blogpost in blogposts %}
 <div class="d-flex mb-4">
     <div class="pr-3">
         <!-- Profile picture -->
-        <div class="feed-post-profile" style="background-image: url('../static/images/profile_pics/victormainak.jpg');">
+        <div class="feed-post-profile" style="background-image: url('{{ blogpost.profile_pic_path }}');">
         </div>
         <!-- Likes button -->
         <div class="feed-post-likes d-flex justify-content-center align-items-center">
@@ -14,24 +15,17 @@
 
         </div>
     </div>
-    <a href="{{ url_for('blogger.blogpost', blogger = 'victormainak', blogpost_id = 1)}}">
+    <a href="{{ url_for('blogger.blogpost', blogger = blogpost.user.user_name, blogpost_id = blogpost.id)}}" class="flex-fill" >
         <div class="feed-post">
             <div class="feed-post-header d-flex align-items-center justify-content-between">
-                <div class="header-4 grayscale-7">victormainak</div>
-                <div class="caption grayscale-5">1 hour ago</div>
+                <div class="header-4 grayscale-7">{{ blogpost.author }}</div>
+                <!-- <div class="caption grayscale-5">1 hour ago</div> -->
             </div>
             <div class="feed-post-image"
                 style="background-image: url('../../static/images/post_images/pexels-karol-d-409701\ 1.png');"></div>
             <div class="feed-post-content">
-                <div class="header-2 grayscale-7 mb-3">Amazing Photography Techniques for Shooting at Night</div>
-                <div class="body-text grayscale-5 mb-5">Sed eget cursus nunc. Fusce a mauris sit amet mi auctor
-                    tincidunt. In
-                    mattis orci vel nunc dignissim cursus. Cras ultrices felis justo, at pretium arcu consequat non.
-                    Quisque
-                    sed facilisis justo, ac tincidunt nulla. Sed euismod orci tellus, sed imperdiet dolor porttitor
-                    quis.
-                    Phasellus pharetra erat nec justo faucibus, non commodo...
-                </div>
+                <div class="header-2 grayscale-7 mb-3">{{ blogpost.title }}</div>
+                <div class="body-text grayscale-5 mb-5">{{ blogpost.body | truncate(300) }}</div>
                 <div class="feed-post-comment d-flex align-items-center">
                     <embed src="../../static/images/bx-message-square-dots.svg" type="">
                     <div class="callout-small grayscale-5 ml-3">10 Comments</div>
@@ -41,4 +35,5 @@
     </a>
 
 </div>
+{% endfor %}
 {% endmacro %}

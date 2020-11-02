@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% import "bootstrap/form.html" as form %}
+
+{% block styles %}
+{{super()}}
+<style>
+    input.form-control,
+    input.form-control:focus,
+    input.form-control:active,
+    textarea {
+        color: #fff;
+        background: none;
+        border-radius: 5px;
+        border: 1px solid #5C6470;
+        caret-color: white;
+    }
+
+    .form-group .CodeMirror {
+        background-color: transparent;
+        color: #fff;
+        background: none;
+        border-radius: 5px;
+        border: 1px solid #5C6470;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .CodeMirror-cursor {
+        border-left: 1px solid white;
+    }
+
+    .editor-toolbar a {
+        color: white;
+    }
+
+    label.form-control-label {
+        font-weight: 600;
+        font-size: 16px;
+        color: #9fa2a8;
+    }
+
+    a.fa {
+        color: #fff !important;
+    }
+
+    a.fa:hover {
+        color: #000 !important;
+    }
+</style>
+
+{% endblock styles %}
+
+{% block content %}
+
+<div class="bg-grayscale-2 p-4 mt-5 mb-5" style="border-radius: 10px">
+    <h1 class="grayscale-7 font-weight-bold text-center mb-4">New Post</h1>
+        {{ form.render_form(blogpost_form) }}
+        {{ simplemde.load }}
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+{{ super() }}
+
+<script>
+    $("input.form-control").attr("autocomplete", "off");
+</script>
+
+{% endblock scripts %}

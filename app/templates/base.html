@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
 
+    {{ simplemde.css }}
+    {{ simplemde.js }}
+
     {% block styles %}
 
     {{ bootstrap.load_css() }}
@@ -26,7 +29,8 @@
     {% block navbar %}
     {% include "navbar.html" %}
     {% endblock %}
-    <div style="width: 100%; min-width: 900px; max-width: 1200px; margin: auto; padding-left: 16px; padding-right: 16px;">
+    <div
+        style="width: 100%; min-width: 900px; max-width: 1200px; margin: auto; padding-left: 16px; padding-right: 16px;">
         <!-- Page content -->
         {% block content %}
 

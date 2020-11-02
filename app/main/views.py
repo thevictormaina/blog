@@ -15,7 +15,10 @@ def index():
     View function to return homepage
     """
     api_url = request_quote()
-    return render_template("index.html", quote = api_url)
+
+    blogposts = Blogpost.query.all()
+
+    return render_template("index.html", quote = api_url, blogposts = blogposts)
 
 @main.route("/<user_name>/subscribe", methods=["GET", "POST"])
 def subscribe(user_name):
