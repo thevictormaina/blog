@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+
+body {
+    font-family: Inter, sans-serif;
+    background: #202327;
+    color: white;
+}
+
+/* Font Styles */
+.headline {
+    font-weight: 600;
+    font-size: 18px;
+    color: #9fa2a8;
+    text-transform: uppercase;
+}
+
+.header-4 {
+    font-weight: 600;
+    font-size: 18px;
+    color: #9fa2a8;
+}
+
+.body-text-2 {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    color: #9fa2a8;
+}
+
+.callout-small {
+    font-weight: 600;
+    font-size: 12px;
+}
+
+#navbar .headline:hover {
+    color: #d8dadf;
+}
+
+/* Navbar Styles */
+#navbar {
+    height: 70px;
+    background: #2e3238;
+}
+#navbar #logo {
+    height: 25px;
+    width: auto;
+}
+
+/* Buttons */
+button,
+.button {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    height: 40px;
+    color: #2e3238;
+    border: none;
+    background-color: none;
+}
+
+button:focus {
+    outline: 0;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.button-outline {
+    border: 2px solid;
+    background: none;
+    border-style: solid;
+}
+
+/* Color */
+.faded-orange {
+    color: #fbbe70;
+}
+
+/* Border Colors */
+.border-faded-orange {
+    border-color: #fbbe70;
+}
+
+/* Background Colors */
+.bg-faded-orange {
+    border: 2px solid #fbbe70;
+    background-color: #fbbe70;
+}
+
+/* Sections */
+#quote {
+    padding: 20px;
+    background: #272a30;
+    border-radius: 10px;
+}
+
+.feed-post-profile {
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.feed-post-likes{
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    border: 2px solid #2E3238;
+    border-radius: 10px;
+    color: #9fa2a8;
+    padding-bottom: 5px;
+    margin-top: 10px;
+}

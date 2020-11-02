@@ -9,7 +9,10 @@
     <title>{{ title }}</title>
 
     {% block styles %}
-    
+
+    {{ bootstrap.load_css() }}
+    <link rel="stylesheet" href="../static/styles/index.css">
+
     {% endblock %}
     {% endblock %}
 </head>
@@ -17,22 +20,23 @@
 <body>
     <!-- Banner for site notifications -->
     {% block banner %}
-        
-    {% endblock %}
 
+    {% endblock %}
     <!-- Navbar -->
     {% block navbar %}
-        
+    {% include "navbar.html" %}
     {% endblock %}
+    <div style="width: 100%; max-width: 1200px; margin: auto;">
+        <!-- Page content -->
+        {% block content %}
 
-    <!-- Page content -->
-    {% block content %}
-        
-    {% endblock %}
+        {% endblock %}
+    </div>
 
     <!-- JavaScipt -->
     {% block scripts %}
-
+    {{ bootstrap.load_js() }}
     {% endblock %}
 </body>
+
 </html>

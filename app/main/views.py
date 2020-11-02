@@ -16,3 +16,9 @@ def index():
     """
     api_url = request_quote()
     return render_template("index.html", quote = api_url)
+
+@main.route("/<user_name>/subscribe", methods=["GET", "POST"])
+def subscribe(user_name):
+    """
+    View function that displays form for reader to subscribe via email
+    """

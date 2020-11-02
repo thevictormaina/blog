@@ -1,0 +1,35 @@
+<div id="navbar" class="navbar navbar-dark">
+  <div class="d-flex justify-content-between" style="width: 100%; max-width: 1200px; margin: auto;">
+    <div class="d-flex">
+      <a class="navbar-brand mt-2 mr-5" href="{{ url_for('main.index') }}">
+        <embed src="../static/images/logo/svg/Logo Dark.svg" id="logo">
+      </a>
+      <a href="{{ url_for('main.index') }}" class="headline align-self-center active">Home</a>
+    </div>
+
+    {% if current_user.is_authenticated %}
+    <!-- Displays when user is logged in -->
+    <div class="d-flex mt-1">
+      <button class="bg-faded-orange d-flex align-items-center mr-3">My Account</button>
+      <button class="button-outline faded-orange border-faded-orange">Sign Out</button>
+    </div>
+    {% else %}
+    <!-- Displays when user is not logged in -->
+    <div class="d-flex mt-2">
+      <a href="{{ url_for('auth.sign_in') }}">
+        <button class="button-outline faded-orange border-faded-orange mr-2">Create an account</button>
+      </a>
+
+      <a href="{{ url_for('auth.login') }}">
+        <button class="bg-faded-orange d-flex align-items-center">
+          <embed src="../static/images/bx-log-in.svg" class="mr-3">
+          <div>
+            Log In
+          </div>
+        </button>
+      </a>
+    </div>
+    {% endif %}
+
+  </div>
+</div>

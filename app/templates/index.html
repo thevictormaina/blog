@@ -1,6 +1,48 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Quote</h1>
-<p>{{ quote.author }} | {{ quote.quote }}</p>
+
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-8">
+            <div class="d-flex align-items-center mb-4">
+                <div class="headline mr-5">Posts</div>
+                <div class="callout-small mr-5">Most Recent</div>
+            </div>
+
+            <!-- Blogposts Feed -->
+            <div class="row">
+                <div class="col-1">
+                    <!-- Profile picture -->
+                    <div class="feed-post-profile"
+                        style="background-image: url('../static/images/profile_pics/victormainak.jpg');"></div>
+                    <!-- Likes button -->
+                    <div class="feed-post-likes d-flex justify-content-center align-items-center">
+                        <div>
+                            <div class="iconify m-0 p-0" data-inline="false" data-icon="bx:bxs-up-arrow-alt"
+                                style="color: #9fa2a8; font-size: 22px;"></div>
+                            <div class="callout-small">
+                                56
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-11"></div>
+            </div>
+
+
+        </div>
+        <div class="col-4">
+            <div class="headline mb-4">Inspirational Quote</div>
+            <div id="quote">
+                <p class="body-text-2">{{ quote.quote }}</p>
+                <p class="text-right header-4 m-0">- {{ quote.author }}</p>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
+{% block scripts %}
+<script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+{% endblock scripts %}

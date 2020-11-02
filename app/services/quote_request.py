@@ -14,8 +14,11 @@ def request_quote():
 
         quote = {"author":None, "quote":None}
 
-        if api_response["quote"]:
+        try:
             quote["author"] = api_response["author"]
             quote["quote"] = api_response["quote"]
+        except:
+            quote["author"] = " Walt Disney"
+            quote["quote"] = "The best way to get started is to quit talking and begin doing."
 
     return quote
