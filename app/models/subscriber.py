@@ -13,7 +13,7 @@ class Subscriber(db.Model):
     first_name = db.Column(db.String(255))
     last_name = db.Column(db.String(255))
 
-    subscriptions = db.relationship("User", secondary=subscriptions_table, back_populates = "subscribers")
+    subscriptions = db.relationship("User", secondary=subscriptions_table, back_populates = "subscribers_list")
 
     def add_subscription(self, user):
         """

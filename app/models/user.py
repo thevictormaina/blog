@@ -30,7 +30,7 @@ class User(UserMixin, db.Model):
     
     blogposts = db.relationship("Blogpost", back_populates = "user")
 
-    subscribers = db.relationship("Subscriber", secondary = subscriptions_table, back_populates="subscriptions")
+    subscribers_list = db.relationship("Subscriber", secondary = subscriptions_table, back_populates="subscriptions")
 
     @property
     def password(self):
