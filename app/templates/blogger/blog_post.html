@@ -59,7 +59,7 @@
         <div class="position-fixed">
             <div class="bg-grayscale-2">
                 {% if blogpost.user.profile_pic_path %}
-                <div class="avatar" style="background-image: url('{{blogpost.user.profile_pic_path}}');">
+                <div class="avatar" style="background-image: url('../{{blogpost.user.profile_pic_path}}');">
                 </div>
                 {% else %}
                 <div class="avatar caption text-center grayscale-5">No profile picture</div>
