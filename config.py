@@ -8,7 +8,7 @@ class Config:
     SECRET_KEY = os.environ.get("SECRET_KEY")
 
     # Set location for Flask Uploads
-    UPLOADED_PHOTOS_DEST = "app/static/images"
+    UPLOADED_PHOTOS_DEST = "app/static/images/profile_pics"
 
     # API Key configurations
     QUOTE_URL = "http://quotes.stormconsultancy.co.uk/random.json"

@@ -3,13 +3,14 @@ from flask_login import login_required, login_user, logout_user, current_user
 import markdown2
 
 from .forms import NewBlogpost, CommentForm
-from .. import db, simple
+from .. import db, simple, photos
 from ..models import Blogpost, Comment, Subscriber, User
 from ..services.email import mail_message
 from . import blogger
 
 
-@blogger.route("/blogger/<user_name>", methods=["GET", "POST"])
+@blogger.route("/<user_name>", methods=["GET", "POST"])
+@login_required
 def profile(user_name):
     """
     View function for displaying blogger's profile page
@@ -87,3 +88,18 @@ def subscribers(user_name):
     View function for displaying list of blogger's subscribers
     """
     pass
+
+@login_required
+@blogger.route("/pic", methods=["GET", "POST"])
+def new_pic():
+    user = User.query.filter_by(id = current_user.id).first()
+
+    if 'photo' in request.files:
+        print("\nUSER", user)
+        filename = photos.save(request.files["photo"])
+        path = f"static/images/profile_pics/{filename}"
+        user.profile_pic_path = path
+        db.session.commit()
+        print("PROFILE PATH: ", user.profile_pic_path)
+
+    return redirect(url_for("blogger.profile", user_name = current_user.user_name))
