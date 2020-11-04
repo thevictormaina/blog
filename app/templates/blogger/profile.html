@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% import "macros/macro_blogposts.html" as macro %}
+
+{% block styles %}
+{{ super() }}
+
+
+{% endblock styles %}
+
+{% block content %}
+
+<div class="d-flex p-4 bg-grayscale-2 my-5" style="border-radius: 10px;">
+    <div>
+        <div style="width: 250px; height: 200px; background-size: cover; background-image: url('{{ current_user.profile_pic_path }}');">
+        </div>
+        <div class="input-group">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile04"
+                    aria-describedby="inputGroupFileAddon04">
+                <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+            </div>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h3>{{ current_user.user_name }}</h3>
+        <p class="grayscale-5">{{ current_user.headline }}</p>
+        <p>{{ current_user.bio }}</p>
+    </div>
+</div>
+<div class="w-75 m-auto">
+    {{macro.feedBlogposts(blogposts)}}
+</div>
+
+username
+profile picture
+email
+first and last names
+headline
+bio
+
+{% endblock content %}

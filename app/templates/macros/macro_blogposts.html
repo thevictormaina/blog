@@ -6,14 +6,13 @@
         <div class="feed-post-profile" style="background-image: url('{{ blogpost.profile_pic_path }}');">
         </div>
         <!-- Likes button -->
-        <div class="feed-post-likes d-flex justify-content-center align-items-center">
+        <!-- <div class="feed-post-likes d-flex justify-content-center align-items-center">
             <div>
                 <div class="iconify m-0 p-0" data-inline="false" data-icon="bx:bxs-up-arrow-alt"
                     style="color: #9fa2a8; font-size: 22px;"></div>
-                <div class="callout-small">56</div>
+                <div class="callout-small">{{ blogpost.upvotes }}</div>
             </div>
-
-        </div>
+        </div> -->
     </div>
     <a href="{{ url_for('blogger.blogpost', blogger = blogpost.user.user_name, blogpost_id = blogpost.id)}}" class="flex-fill" >
         <div class="feed-post">
@@ -28,7 +27,7 @@
                 <div class="body-text grayscale-5 mb-5">{{ blogpost.body | truncate(300) }}</div>
                 <div class="feed-post-comment d-flex align-items-center">
                     <embed src="../../static/images/bx-message-square-dots.svg" type="">
-                    <div class="callout-small grayscale-5 ml-3">10 Comments</div>
+                    <div class="callout-small grayscale-5 ml-3">{{blogpost.comments | length}} Comments</div>
                 </div>
             </div>
         </div>

@@ -1,9 +1,55 @@
 {% extends 'base.html' %}
+{% import "bootstrap/form.html" as form %}
 
 {% block styles %}
 {{ super() }}
 <link rel="stylesheet" href="../../static/styles/blogpost.css">
 {% endblock styles %}
+<style>
+    input.form-control,
+    input.form-control:focus,
+    input.form-control:active,
+    textarea {
+        color: #fff;
+        background: none;
+        border-radius: 5px;
+        border: 1px solid #5C6470;
+        caret-color: white;
+    }
+
+    .form-group .CodeMirror {
+        background-color: transparent;
+        color: #fff;
+        background: none;
+        border-radius: 5px;
+        border: 1px solid #5C6470;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .CodeMirror-cursor {
+        border-left: 1px solid white;
+    }
+
+    .editor-toolbar a {
+        color: white;
+    }
+
+    label.form-control-label {
+        font-weight: 600;
+        font-size: 16px;
+        color: #9fa2a8;
+    }
+
+    a.fa {
+        color: #fff !important;
+    }
+
+    a.fa:hover {
+        color: #000 !important;
+    }
+</style>
 
 {% block content %}
 
@@ -15,8 +61,8 @@
                 <div class="avatar" style="background-image: url('../../static/images/profile_pics/victormainak.jpg');">
                 </div>
                 <div class="p-4">
-                    <div class="grayscale-7 header-4">victormainak</div>
-                    <div class="caption grayscale-5">Photography Blogger</div>
+                    <div class="grayscale-7 header-4">{{ blogpost.user.usern_ame }}</div>
+                    <div class="caption grayscale-5">{{ blogpost.user.headline }}</div>
                 </div>
             </div>
             <a href="">
@@ -42,9 +88,17 @@
             </div>
         </div>
         <div class="blogpost-content body-text grayscale-5 pl-3 pr-3">{{ body_format | safe}}</div>
+
+        <div class="comments">
+            {% for comment in comments %}
+            <span>{{comment.full_name}}</span>
+            <span>{{comment.comment}}</span>                
+            {% endfor %}
+        </div>
+        <div class="comments-field my-5 ">
+            {{form.render_form(comment_form)}}
+        </div>
     </div>
-
-
 </div>
 
 

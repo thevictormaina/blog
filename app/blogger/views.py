@@ -2,7 +2,7 @@ from flask import flash, redirect, render_template, request, url_for
 from flask_login import login_required, login_user, logout_user, current_user
 import markdown2
 
-from .forms import NewBlogpost
+from .forms import NewBlogpost, CommentForm
 from .. import db, simple
 from ..models import Blogpost, Comment, Subscriber, User
 from ..services.email import mail_message
@@ -17,10 +17,11 @@ def profile(user_name):
     Readers: can view blogger's profile
     Bloggers: can change profile picture. Also has create new post button
     """
+    blogposts = Blogpost.query.filter_by(user_id = current_user.id).all()
     user = User.query.filter_by(user_name = user_name).first()
 
     title = f"Unload - {user_name}"
-    return render_template("blogger/profile.html", user = user)
+    return render_template("blogger/profile.html", user = user, blogposts = blogposts)
 
 @blogger.route('/blogpost/<blogpost_id>', methods=["GET", "POST"])
 def blogpost(blogpost_id):
@@ -30,14 +31,23 @@ def blogpost(blogpost_id):
     Readers: can read post by blogger and leave comments
     Bloggers: can view post and delete comments
     """
+    comment_form = CommentForm()
+
+    if comment_form.validate_on_submit:
+        comment = Comment(full_name = comment_form.name.data, email = comment_form.email.data, comment = comment_form.comment.data, blogpost_id = blogpost_id)
+
+        db.session.add(comment)
+        db.session.commit()
+
     user = request.args.get("user_name")
     blogpost = Blogpost.query.filter_by(id = blogpost_id).first()
+    comments = Comment.query.filter_by(blogpost_id = blogpost_id).all()
 
     body_format = markdown2.markdown(blogpost.body, extras = ["code-friendly", "fenced-code-blocks"])
 
     title = f"Unload - {blogpost.title}"
 
-    return render_template("blogger/blog_post.html", user = user, blogpost = blogpost, body_format = body_format, title = title)
+    return render_template("blogger/blog_post.html", user = user, blogpost = blogpost, body_format = body_format, title = title, comment_form = comment_form, comments = comments)
 
 @blogger.route("/new-post", methods=["GET", "POST"])
 @login_required
