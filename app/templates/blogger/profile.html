@@ -13,15 +13,8 @@
     <div>
         <img src="{{current_user.profile_pic_path}}" alt="" style="width: 250px; margin-bottom: 15px; border-radius: 10px;">
         <form action="{{url_for('blogger.new_pic')}}" method="post" enctype="multipart/form-data">
-            <div class="input-group" style="width: 250px;">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
-                  <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
-                </div>
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Submit</button>
-                </div>
-              </div>
+          <input type="file" name="photo" required>
+          <button class="button bg-faded-orange">Submit</button>
         </form>
     </div>
     <div class="ml-5">

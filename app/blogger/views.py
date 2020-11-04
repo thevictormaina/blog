@@ -89,8 +89,8 @@ def subscribers(user_name):
     """
     pass
 
-@login_required
 @blogger.route("/pic", methods=["GET", "POST"])
+@login_required
 def new_pic():
     user = User.query.filter_by(id = current_user.id).first()
 
