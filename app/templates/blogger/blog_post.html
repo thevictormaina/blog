@@ -58,18 +58,26 @@
     <div class="blogpost_profile mr-4">
         <div class="position-fixed">
             <div class="bg-grayscale-2">
-                <div class="avatar" style="background-image: url('../../static/images/profile_pics/victormainak.jpg');">
+                {% if blogpost.user.profile_pic_path %}
+                <div class="avatar" style="background-image: url('{{blogpost.user.profile_pic_path}}');">
                 </div>
+                {% else %}
+                <div class="avatar caption text-center grayscale-5">No profile picture</div>
+                {% endif %}
+
+
+
                 <div class="p-4">
-                    <div class="grayscale-7 header-4">{{ blogpost.user.usern_ame }}</div>
+                    <div class="grayscale-7 header-4">{{ blogpost.user.user_name }}</div>
+                    {% if blogpost.user.headline %}
+
                     <div class="caption grayscale-5">{{ blogpost.user.headline }}</div>
+                    {% endif %}
                 </div>
             </div>
             <a href="">
-                <button class="button-outline position-relative faded-orange border-faded-orange mt-4 w-100 text-center">Visit Profile</button>
-            </a>
-            <a href="">
-                <button class="bg-faded-orange position-relative border-faded-orange mt-3 w-100 text-center">Subscribe</button>
+                <button
+                    class="bg-faded-orange position-relative border-faded-orange mt-3 w-100 text-center">Subscribe</button>
             </a>
 
         </div>
@@ -89,15 +97,19 @@
         </div>
         <div class="blogpost-content body-text grayscale-5 pl-3 pr-3">{{ body_format | safe}}</div>
 
-        <div class="comments">
-            {% for comment in comments %}
-            <span>{{comment.full_name}}</span>
-            <span>{{comment.comment}}</span>                
-            {% endfor %}
-        </div>
-        <div class="comments-field my-5 ">
+        <div class="header-4 mt-5 mb-3">Post a comment</div>
+        <div class="comments-field mb-5 ">
             {{form.render_form(comment_form)}}
         </div>
+
+        <div class="headline grayscale-5 mb-4">Comments</div>
+
+        {% for comment in comments %}
+        <div class="comments">
+            <span class="callout grayscale-5 mr-3 mb-3">{{comment.full_name}}</span>
+            <span class="callout grayscale-7">{{comment.comment}}</span>
+        </div>
+        {% endfor  %}
     </div>
 </div>
 

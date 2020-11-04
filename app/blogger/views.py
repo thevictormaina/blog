@@ -33,7 +33,7 @@ def blogpost(blogpost_id):
     """
     comment_form = CommentForm()
 
-    if comment_form.validate_on_submit:
+    if comment_form.validate_on_submit():
         comment = Comment(full_name = comment_form.name.data, email = comment_form.email.data, comment = comment_form.comment.data, blogpost_id = blogpost_id)
 
         db.session.add(comment)
@@ -41,7 +41,14 @@ def blogpost(blogpost_id):
 
     user = request.args.get("user_name")
     blogpost = Blogpost.query.filter_by(id = blogpost_id).first()
-    comments = Comment.query.filter_by(blogpost_id = blogpost_id).all()
+
+    comments = []
+    for comment in Comment.query.filter_by(blogpost_id = blogpost_id).all():
+        if comment.comment != "None":
+            comments.append(comment)
+            print("\nCOMMENT: ", comment.comment)
+        else:
+            pass
 
     body_format = markdown2.markdown(blogpost.body, extras = ["code-friendly", "fenced-code-blocks"])
 
