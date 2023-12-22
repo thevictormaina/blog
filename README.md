@@ -24,7 +24,7 @@ $ sudo apt install git python3 postgresql
 You can now clone the repository on your computer. Navigate into the new directory after the clone is complete.
 
 ```bash
-$ git clone https://github.com/VictorKMaina/blog-app.git
+$ git clone https://github.com/thevictormaina/blog.git
 $ cd blog-app
 ```
 As mentioned before, Unload runs on Flask and other Python modules. To install all the dependencies, you will need to create a virtual environment and activate it.
