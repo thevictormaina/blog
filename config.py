@@ -36,7 +36,9 @@ class DevConfig(Config):
     DB_PASSWORD = os.getenv("DB_PASSWORD")
     DB_NAME = os.getenv("DB_NAME")
     DB_HOST = os.getenv("DB_HOST")
-    SQLALCHEMY_DATABASE_URI = f"postgresql+psycopg2://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}"
+    DB_CONNECTOR = os.getenv("DB_CONNECTOR")
+    DB_ADAPTER = os.getenv("DB_ADAPTER")
+    SQLALCHEMY_DATABASE_URI = f"{DB_CONNECTOR}+{DB_ADAPTER}://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}"
     DEBUG = os.getenv("APPLICATION_DEBUG") == "True"
 
 
@@ -48,7 +50,9 @@ class TestConfig(Config):
     DB_PASSWORD = os.getenv("DB_PASSWORD")
     DB_NAME = os.getenv("DB_NAME")
     DB_HOST = os.getenv("DB_HOST")
-    SQLALCHEMY_DATABASE_URI = f"postgresql+psycopg2://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}/blog_app_test"
+    DB_CONNECTOR = os.getenv("DB_CONNECTOR")
+    DB_ADAPTER = os.getenv("DB_ADAPTER")
+    SQLALCHEMY_DATABASE_URI = f"{DB_CONNECTOR}+{DB_ADAPTER}://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}"
 
 
 class ProdConfig(Config):
