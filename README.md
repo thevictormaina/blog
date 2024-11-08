@@ -51,37 +51,38 @@ username=# CREATE DATABASE blog_app;
 username=# \q
 ```
 
-To be able to send emails to users, the app will access to an email address. For simplicity's sake, a dummy Google account and password have already been created. The app looks for exported environment variables to run. To enable this, create a file in the app's root directory called `start.sh`.
+To be able to send emails to users, the app will access to an email address. For simplicity's sake, a dummy Google account and password have already been created. The app looks for exported environment variables to run. To enable this in development mode, create a `.env` file in the root of the directory and add all the required environment variables. To enable this in production, follow your operating system's instructions for creating environment variables.
+
+Unload uses SQLAlchemy to make managing the database directly from the app easier. To update your database to work with this app's models, run the following on your terminal.
 
 ```bash
-$ touch start.sh
-$ chmod a+x start.sh
+$ python3.6 run.py db upgrade
 ```
 
-Pitcher will need a secret key for an imported module called WTForms. It will also need to connect to the database you created. Go to `config.py` under the `DevCoonfig` class, and replace the `username` and `password` with your own.
-
-Pitcher uses SQLAlchemy to make managing the database directly from the app easier. To update your database to work with this app's models, run the following on your terminal.
-
-```bash
-$ python3.6 manage.py db upgrade
-```
-
+## Running locally
 Run the application.
 
 ```bash
-$ ./start.sh
+$ python3.6 run.py server
 ```
 As long as the server is running, you can open it in the browser [using this link](http://127.0.0.1:5000).
 
-## Tests
-The app comes with some test modules. To run them, you will need to create another Postgresql database with the name `blog_app_test`. Then edit `config.py` match your own Postgres username and password. Change you `start.sh` to look like this.
-
-```bash
-...
-python3.6 manage.py test
-```
-
-Now run `./start.sh` on your terminal.
+## Environment Variables
+| Environment Variable    | Value       |
+|-------------------------|-------------|
+| SECRET_KEY              | String      |
+| DB_USERNAME             | String      |
+| DB_PASSWORD             | String      |
+| DB_NAME                 | String      |
+| DB_HOST                 | String      |
+| APPLICATION_DEBUG       | Boolean     |
+| DATABASE_URL            | String      |
+| MAIL_SERVER             | String      |
+| MAIL_PORT               | Integer     |
+| MAIL_USE_TLS            | Boolean     |
+| MAIL_USERNAME           | String      |
+| MAIL_PASSWORD           | String      |
+| APPLICATION_MODE        | "development" or "production"|
 
 ## Known bugs
 At the moment, writers can't delete blogposts or comments.

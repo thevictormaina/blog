@@ -1,3 +1,5 @@
+.env
+env/
 start.sh
 virtual/
 *.pyc
